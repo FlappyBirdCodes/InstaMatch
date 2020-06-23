@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>InstaMatch</title>
+    <!--stylesheet-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <link href="styles/styles.css" rel="stylesheet" type="text/css">
+    <link href="styles/custom-responsive-styles.css" rel="stylesheet" type="text/css">
+    <!--scripts-->
+    <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="scripts/all-plugins.js"></script>
+    <script type="text/javascript" src="scripts/plugins-activate.js"></script>
+</head>
+
+<body id="page-top">
+    <!-- Navigation -->
+    <div class="logo">
+        <a id="settingsToHome" href="/homepage" style="text-decoration: none;" onclick="settingsToHome();"><span
+                style="font-size: 50px; font-weight: bold;">Home</span></a>
+    </div>
+
+    <script>
+        function settingsToHome() {
+            document.getElementById("settingsToHome").href += location.search;
+        }
+    </script>
+
+
+    <a class="menu-toggle rounded" href="#">
+        <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a class="smooth-scroll" href="#Header"></a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a class="smooth-scroll" href="#page-top">Settings</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a id="toMatches" href="/matches" onclick="toMatches();">Matches</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a id="matchRequests" href="/matchRequests" onclick="toMatchRequest();">Match Requests</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="/">Log out</a>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        function toChangePage() {
+            document.getElementById("changePage").href += location.search;
+        }
+    </script>
+
+    <script>
+        function toMatches() {
+            document.getElementById("toMatches").href += location.search;
+        }
+    </script>
+
+    <script>
+        function toMatchRequest() {
+            document.getElementById("matchRequests").href += location.search;
+        }
+    </script>
+
+    <!-- Header Starts -->
+    <section id="Banner" class="content-section">
+        <div class="container content-wrap">
+
+            <!-- Default form contact -->
+            <form class="p-5 w-75" id="update" action="/changeInfo" method="POST"
+                style="border: 2px solid white; margin: 0 auto; margin-top: -10px;">
+
+                <p class="h4 mb-4" style="font-size: 45px; font-weight: bold; text-align: center; margin-top: -25px;">
+                    Settings</p>
+
+                <div class="first-line line line-margin">
+                    <label style="margin-top: -10% !important;">Username</label>
+                    <input type="username" name="username" id="username" class="form-control mb-4" value="{{username}}"
+                        readonly>
+                </div>
+
+                <div class="first-line line">
+                    <label>Age</label>
+                    <input type="text" name="age" class="form-control mb-4" placeholder="Age" value="{{age}}" required>
+                </div>
+
+
+                <div class="second-line line line-margin">
+                    <label>Gender</label>
+                    <select name="gender" class="form-control mb-4" required>
+                        <option value="{{gender}}" hidden="hidden" selected="selected">{{gender}}</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Both">Both</option>
+                    </select>
+                </div>
+
+                <div class="second-line line">
+                    <label>Looking For</label>
+                    <select name="lookingFor" class="form-control mb-4" required>
+                        <option value="{{status}}" hidden="hidden" selected="selected">{{status}}</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Both">Both</option>
+                    </select>
+                </div>
+
+                <div class="third-line line line-margin">
+                    <label>Location</label>
+                    <input type="text" name="location" class="form-control mb-4" placeholder="Location"
+                        value="{{location}}" required>
+                </div>
+
+                <div class="third-line line">
+                    <label>Profile Picture</label>
+                    <input type="text" name="fileURL" class="form-control mb-1" placeholder="File URL"
+                        value="{{fileURL}}">
+                </div>
+
+                <div>
+                    <h3 class="mb-3" style="text-align: center;">File must be converted to direct link first. Use <a
+                            href="https://postimages.org/" style="color: wheat;" target="_blank">this</a> website to do
+                        so.</h3>
+                </div>
+
+                <div class="form-group line-margin" style="width: 95%;">
+                    <label>Description</label>
+                    <textarea class="form-control rounded-0" name="description" rows="5" style="resize: none;"
+                        placeholder="Description" required>{{description}}</textarea>
+                </div>
+
+                <!-- Send button -->
+                <button class="btn btn-light btn-block w-100" type="submit" onclick="addQuery();"
+                    style="margin-bottom: -2%; margin-top: 4%;">Update Profile</button>
+
+            </form>
+
+            <script>
+                function addQuery() {
+                    document.getElementById("update").action += location.search;
+                }
+
+            </script>
+
+            <div class="overlay"></div>
+    </section>
+
+
+
+</body>
+
+</html>

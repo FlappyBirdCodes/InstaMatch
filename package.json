@@ -1,0 +1,30 @@
+{
+  "name": "d",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "all-the-cities": "^3.1.0",
+    "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "express-session": "^1.17.1",
+    "express-sessions": "^1.0.6",
+    "fs": "0.0.1-security",
+    "mongoose": "^5.9.17",
+    "nodemon": "^2.0.4",
+    "picsum-photos": "^3.0.1",
+    "random-image-placeholder": "^1.0.1",
+    "random-sentence": "^1.0.4",
+    "url": "^0.11.0"
+  }
+}

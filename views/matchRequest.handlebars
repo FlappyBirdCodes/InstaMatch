@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>InstaMatch</title>
+    <!--stylesheet-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <link href="/styles/styles.css" rel="stylesheet" type="text/css">
+    <link href="/styles/custom-responsive-styles.css" rel="stylesheet" type="text/css">
+
+    <!--scripts-->
+    <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="scripts/all-plugins.js"></script>
+    <script type="text/javascript" src="scripts/plugins-activate.js"></script>
+
+</head>
+
+<body id="page-top" style="background-color: lightcoral;">
+    <!-- Navigation -->
+    <div class="logo">
+        <a id="backToHome" href="/homepage" style="text-decoration: none;" onclick="backToHome();"><span
+                style="font-size: 50px; font-weight: bold;">Home</span></a>
+    </div>
+
+    <script>
+        function backToHome() {
+            document.getElementById("backToHome").href += location.search;
+        }
+    </script>
+
+    <a class="menu-toggle rounded" href="#">
+        <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a class="smooth-scroll" href="#"></a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a id="toSettings" href="/settings" onclick="toSettings();">Settings</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a id="toMatches" href="/matches" onclick="toMatches();">Matches</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="/matchRequests" id="matchRequests" onclick="toMatchRequest();">Match Requests</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="/">Log out</a>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        function toMatchRequest() {
+            document.getElementById("matchRequests").href += location.search;
+        }
+    </script>
+
+    <script>
+        function toChangePage() {
+            document.getElementById("changePage").href += location.search;
+        }
+    </script>
+
+    <script>
+        function toSettings() {
+            document.getElementById("toSettings").href += location.search;
+        }
+    </script>
+
+    <script>
+        function toMatches() {
+            document.getElementById("toMatches").href += location.search;
+        }
+    </script>
+
+    <!-- Header Starts -->
+    <section class="content-section">
+        <div class="container content-wrap text-center">
+
+            <div class="row align-self-center" style="margin-top: 50px;">
+                <div style="width: 800px; margin: 0 auto; margin-bottom: 10px;">
+
+                    <div class="card">
+                        <div class="card-header" style="background-color: lightcyan;">
+                            <h4 style="font-size: 40px; color: lightcoral;">Match Requests</h4>
+                        </div>
+
+                        {{#each potentialMatches}}
+                        <div class="match" style="background-color: lightcyan;">
+                            <div class="gaadiex-list-item">
+                                <div class="gaadiex-list-item-text" style="width: 55%;" style="display: inline-block;">
+                                    <p
+                                        style="color: black; font-size: 20px; margin-left: 40px; margin-top: 16px; text-align: left;">
+                                        {{this.username}} would like to match with you.</p>
+                                </div>
+
+                                <div
+                                    style="float: right; margin-right: 10px; display: inline-block; margin-top: -55px; margin-bottom: 6px;">
+
+                                    <form method="POST" action="/viewProfile/{{@index}}" id="{{@index}}-view"
+                                        style="display: inline-block;">
+                                        <button type="submit" onclick="toViewProfile();"
+                                            class="btn btn-warning btn-lg">View Profile</button>
+                                    </form>
+
+                                    <form style="display: inline-block;" method="POST" action="/addMatch/{{@index}}" id="{{@index}}-match">
+                                        <button type="submit" class="btn btn-success btn-lg" onclick="addMatch();"
+                                            style="margin-right: 4px; margin-left: 4px;">Match</button>
+                                    </form>
+
+                                    <form style="display: inline-block;" method="POST" id="{{@index}}-delete"
+                                        action="/deleteRequest/{{@index}}">
+                                        <button type="submit" class="btn btn-danger btn-lg" onclick="deleteMatch();">Delete</button>
+                                    </form>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        {{else}}
+                        <p style="font-size: 40px; color: lightcoral; margin: 0 auto;">OOF! You currently have
+                            no match requests.</p>
+                        {{/each}}
+
+                        <script>
+                            function toViewProfile() {
+                                const matchesCount = $(".match").length;
+                                for (let i = 0; i < matchesCount; i++) {
+                                    document.getElementById(i + "-view").action += location.search;
+                                    $('form').submit(function () {
+                                        $(this).find("button[type='submit']").prop('disabled', true);
+                                    });
+                                }
+                            }
+                        </script>
+
+                        <script>
+                            function addMatch() {
+                                const matchesCount = $(".match").length;
+                                for (let i = 0; i < matchesCount; i++) {
+                                    document.getElementById(i + "-match").action += location.search;
+                                    $('form').submit(function () {
+                                        $(this).find("button[type='submit']").prop('disabled', true);
+                                    });
+                                }
+                            }
+                        </script>
+
+                        <script>
+                            function deleteMatch() {
+                                const matchesCount = $(".match").length;
+                                for (let i = 0; i < matchesCount; i++) {
+                                    document.getElementById(i + "-delete").action += location.search;
+                                    $('form').submit(function () {
+                                        $(this).find("button[type='submit']").prop('disabled', true);
+                                    });
+                                }
+                            }
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="overlay"></div>
+    </section>
+
+</body>
+
+</html>

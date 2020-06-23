@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <title>InstaMatch</title>
+  <!--stylesheet-->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    type="text/css">
+
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+
+
+  <link href="styles/styles.css" rel="stylesheet" type="text/css">
+  <link href="styles/custom-responsive-styles.css" rel="stylesheet" type="text/css">
+  <!--scripts-->
+  <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="scripts/all-plugins.js"></script>
+  <script type="text/javascript" src="scripts/plugins-activate.js"></script>
+</head>
+
+<body id="page-top">
+  <!-- Navigation -->
+  <div class="logo">
+    <a href="/" style="text-decoration: none;"><span
+        style="font-size: 50px; font-weight: bold;">InstaMatch</span></a>
+  </div>
+
+  <!-- Header Starts -->
+  <section id="Banner" class="content-section">
+    <div class="container content-wrap text-center">
+      <h1>Match With Your Future Partner</h1>
+      <h3>
+        <em>The Best Way to Find Love Online</em>
+      </h3>
+      <a class="btn btn-primary btn-xl" style="margin-right: 2%; font-size: 20px;" data-toggle="modal"
+        data-target="#loginPopup">Log In</a>
+      <a class="btn btn-primary btn-xl" style="font-size: 20px;" data-toggle="modal"
+        data-target="#signupPopup">Sign Up</a>
+    </div>
+    <div class="overlay"></div>
+  </section>
+
+  <!-- Modal for login-->
+  <div class="modal fade" id="loginPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: whitesmoke;">
+          <h5 class="modal-title" id="exampleModalLongTitle"
+            style="font-size: 40px; color: darkslategray; margin-left: 39%; margin-bottom: -2%; margin-top: -2%; font-family: 'Times New Roman', Times, serif;">
+            Log In</h5>
+        </div>
+        <div class="modal-body" style="word-wrap: break-word;">
+          <form action="/logIn" method="POST">
+
+
+            <label>Username</label>
+            <input type="text" name="username" class="form-control" style="margin-bottom: 4%;" required>
+
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" style="margin-bottom: 4%;" required>
+
+            <button type="submit" class="btn btn-primary"
+              style="margin-left: 42%; padding-left: 5%; padding-right: 5%;">Log In</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for sign up-->
+  <div class="modal fade" id="signupPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: whitesmoke;">
+          <h5 class="modal-title" id="exampleModalLongTitle"
+            style="font-size: 40px; color: darkslategray; margin-left: 37%; margin-bottom: -2%; margin-top: -2%; font-family: 'Times New Roman', Times, serif;">
+            Sign Up</h5>
+        </div>
+        <div class="modal-body" style="word-wrap: break-word;">
+          <form action="/signUp" method="POST">
+
+
+            <label>Username</label>
+            <input type="text" name = "signupUsername" class="form-control" style="margin-bottom: 4%;" required placeholder="Username is not changable upon sign up">
+
+            <label>Password</label>
+            <input type="text" id = "signupPassword" name = "signupPassword" class="form-control" style="margin-bottom: 4%;" required placeholder="Password is not changable upon sign up">
+
+            <label>Age</label>
+            <input type="text" name = "signupAge" class="form-control" style="margin-bottom: 4%;" required>
+
+            <label>Gender</label>
+            <select class="form-control" name="signupGender" required>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select><br>
+
+            <label>Looking For</label><br>
+            <select class="form-control" name="signupLooking" required>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Both">Both</option>
+            </select><br>
+
+            <label>Location</label>
+            <input type="text" name = "signupLocation" class="form-control" style="margin-bottom: 4%;" required>
+
+            <label>Description</label>
+            <textarea type="text" name = "signupDescription" class="form-control" style="margin-bottom: 4%; resize: none; height: 150px; word-wrap: break-word;" required></textarea>
+
+            <button type="submit" class="btn btn-primary" onclick="setInvalid();"
+              style="margin-left: 42%; padding-left: 5%; padding-right: 5%;">Sign Up</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>InstaMatch</title>
+    <!--stylesheet-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <link href="/styles/styles.css" rel="stylesheet" type="text/css">
+    <link href="/styles/custom-responsive-styles.css" rel="stylesheet" type="text/css">
+    <!--scripts-->
+    <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="scripts/all-plugins.js"></script>
+    <script type="text/javascript" src="scripts/plugins-activate.js"></script>
+</head>
+
+<body id="page-top">
+    <!-- Navigation -->
+    <div class="logo">
+        <a id="backToHome" href="/homepage" style="text-decoration: none;" onclick="backToHome();"><span
+                style="font-size: 50px; font-weight: bold;">Home</span></a>
+    </div>
+
+    <script>
+        function backToHome() {
+            document.getElementById("backToHome").href += location.search;
+        }
+    </script>
+
+    <a class="menu-toggle rounded" href="#">
+        <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a class="smooth-scroll" href="#Header"></a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a id="toSettings" href="/settings" onclick="toSettings();">Settings</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a id="toMatches" href="/matches" onclick="toMatches();">Matches</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a id="matchRequests" href="/matchRequests" onclick="toMatchRequest();">Match Requests</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="/">Log out</a>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+        function toChangePage() {
+            document.getElementById("changePage").href += location.search;
+        }
+    </script>
+
+    <script>
+        function toSettings() {
+            document.getElementById("toSettings").href += location.search;
+        }
+    </script>
+
+    <script>
+        function toMatches() {
+            document.getElementById("toMatches").href += location.search;
+        }
+    </script>
+
+    <script>
+        function toMatchRequest() {
+            document.getElementById("matchRequests").href += location.search;
+        }
+    </script>
+
+
+    <!-- Header Starts -->
+    <section id="Banner" class="content-section">
+        <div class="container content-wrap text-center">
+
+            <div class="container" style="width: 75%; border: 2px solid white; padding: 10px 10px; margin-top: 30px;">
+
+                <h2 id="username" style="font-size: 45px;">{{username}}</h2>
+
+                <img id="profileImage" style="width: 60%; margin-bottom: 10px; margin-top: 10px; height: 16em;"
+                    src="{{profilePic}}">
+
+                <p id="age" style="font-size: 22px;"><strong>Age: </strong>{{age}}</p>
+
+                <p style="font-size: 22px;"><strong>Gender: </strong>{{gender}}</p>
+
+                <p style="font-size: 22px;"><strong>Looking for: </strong>{{lookingFor}}</p>
+
+                <p style="font-size: 22px;"><strong>Location: </strong>{{location}}</p>
+
+                <p style="font-size: 22px;"><strong>Description: </strong>{{description}}</p>
+
+
+                <form id="instaMatch" method="POST" action="/matchRequests">
+                    <button type="submit" id="backToMatchRequests" class="btn btn-primary btn-xl" onclick="toMatchRequests();"
+                        style="font-size: 20px; margin-top: 10px; margin-bottom: 10px;">Back to Match Requests</button>
+                </form>
+
+                <script>
+                    function toMatchRequests() {
+                        document.getElementById("instaMatch").action += location.search;
+                        document.getElementById("backToMatchRequests").disabled = "true";
+                        document.getElementById("instaMatch").submit();
+                    }
+                </script>
+
+            </div>
+
+
+
+            <div class="col-xs-12 col-sm-4 text-center">
+                <figure>
+                    <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png"
+                        alt="" class="img-circle img-responsive">
+                </figure>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </section>
+
+</body>
+
+</html>

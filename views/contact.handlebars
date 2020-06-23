@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>InstaMatch</title>
+
+    <!--stylesheet-->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,900" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+    <link href="/styles/styles.css" rel="stylesheet" type="text/css">
+    <link href="/styles/custom-responsive-styles.css" rel="stylesheet" type="text/css">
+    <link href="/styles/matches.css" rel="stylesheet" type="text/css">
+
+    <!--scripts-->
+    <script type="text/javascript" src="scripts/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="scripts/all-plugins.js"></script>
+    <script type="text/javascript" src="scripts/plugins-activate.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+</head>
+
+<body id="page-top" style="background-color: lightcoral;" onload="keepScroll();">
+
+
+    <!-- Navigation -->
+    <div class="logo">
+        <a id="backToHome" href="/homepage" style="text-decoration: none;" onclick="backToHome();"><span
+                style="font-size: 50px; font-weight: bold;">Home</span></a>
+    </div>
+
+    <script>
+        function backToHome() {
+            document.getElementById("backToHome").href += location.search;
+        }
+    </script>
+
+    <a class="menu-toggle rounded" href="#">
+        <i class="fa fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a class="smooth-scroll" href="#Header"></a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a id="toSettings" href="/settings" onclick="toSettings();" style="font-size: 15px;">Settings</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a id="toMatches" href="/matches" onclick="toMatches();" style="font-size: 15px;">Matches</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="/matchRequests" id="matchRequests" onclick="toMatchRequest();" style="font-size: 15px;">Match
+                    Requests</a>
+            </li>
+            <li class="sidebar-nav-item">
+                <a href="/" style="font-size: 15px;">Log out</a>
+            </li>
+        </ul>
+    </nav>
+
+    <script>
+
+        setInterval(function () {
+            let submitMessage = document.getElementById("message");
+            if (submitMessage.value.length == 0) {
+                window.location = window.location;
+            }
+        }, 6000);
+
+    </script>
+
+    <script>
+        function toChangePage() {
+            document.getElementById("changePage").href += location.search;
+        }
+    </script>
+
+    <script>
+        function toSettings() {
+            document.getElementById("toSettings").href += location.search;
+        }
+    </script>
+
+    <script>
+        function toMatches() {
+            document.getElementById("toMatches").href += location.search;
+        }
+    </script>
+
+    <script>
+        function toMatchRequest() {
+            document.getElementById("matchRequests").href += location.search;
+        }
+    </script>
+
+    <section>
+
+        <div class="container content-wrap">
+
+            <div id="messages" class="container" style="height: 500px; overflow-y: scroll; margin-top: 120px;">
+                {{#each messages}}
+                <div class="row" style="margin-bottom: 10px;">
+                    <div class="alert alert-danger fade in" style="width: 700px; margin: 0 auto;">
+                        <h4 style="display: inline-block;">{{this.username}}</h4>
+                        <h4 style="display: inline-block; float: right;">{{this.time}}</h4>
+                        <h2 style="font-size: 20px; margin-top: -0.5%; margin-bottom: -0.5%;">{{this.message}}</h2>
+                    </div>
+                </div>
+                {{else}}
+                <p style="font-size: 40px; color: white; text-align: center;">OOF! You currently have no messages
+                    from this
+                    user.</p>
+                {{/each}}
+            </div>
+
+        </div>
+
+        <div class="container text-center" style="margin-top: 20px;">
+
+            <p class="h4"
+                style="font-size: 30px; font-weight: bold; margin-top: 10px; color: white; margin-left: 2%; text-align: center;">
+                To: {{contact}}</p>
+
+            <form class="p-5 w-75" id="update" action="/sendMessage" method="POST"
+                style="border: 2px solid white; margin: 0 auto; margin-bottom: -45px;">
+
+                <h3 style="color: white; margin-bottom: 10px; margin-top: -20px;">Please do not spam the messaging
+                    feature.</h3>
+                <div class="form-group line-margin" style="width: 95%;">
+                    <textarea class="form-control rounded-0" id="message" name="message" rows="5" style="resize: none;"
+                        placeholder="Message" autofocus required></textarea>
+                </div>
+
+                <button type="submit" id="sendText" class="btn btn-light w-100" onclick="addQuery();"
+                    style="outline: none;">Send
+                    Message</button>
+            </form>
+
+        </div>
+
+        <script>
+            message.addEventListener("keyup", function (event) {
+                //Execeutes when user likes Enter button
+                if (event.keyCode === 13) {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById("sendText").click();
+                }
+            });
+        </script>
+
+        <script>
+            function addQuery() {
+                document.getElementById("update").action += location.search;
+                document.getElementById("sendText").disabled = "true";
+                let message = document.getElementById("message");
+                console.log(message.value);
+                if (message.value.trim().length > 0) {
+                    document.getElementById("update").submit();
+                } else {
+                    alert("Your message cannot be empty.");
+                    location.reload();
+                }
+            }
+        </script>
+
+
+        <p id="contact" style="visibility: hidden;">{{contact}}</p>
+
+        <script>
+
+            function keepScroll() {
+                const messages = document.getElementById("messages");
+                messages.scrollTop = messages.scrollHeight;
+            }
+
+        </script>
+
+
+        <div class="overlay"></div>
+    </section>
+
+</body>
+
+</html>

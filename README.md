@@ -9,3 +9,6 @@ When users want to "match", the backend system will query all users that the cur
 
 # Messaging 
 Messaging in this app was done with mongoDB. Messages and their information are stored in a database when they are submitted. They are recovered and updated whenever necessary, such as when a user submits a new message.
+
+# Skills
+Implementing many different features, such as randomized matching, messaging and password authentication, requires an understanding of expresJS and proefficiency in javascript. While building this app, I had to use complex javascript features such as promises and async-await. I also had to use express features such as middleware functions to attach information and sessions to send data across different routes. 
